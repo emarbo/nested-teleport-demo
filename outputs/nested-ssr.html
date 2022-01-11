@@ -1,0 +1,43 @@
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>nested-teleport-demo</title>
+    <script defer="defer" src="/js/chunk-vendors.3b5cf427.js"></script>
+    <script defer="defer" src="/js/app.0dff13ea.js"></script>
+    <link href="/css/app.bd071c00.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <!--[-->
+      <nav>
+        <a href="/" class="">Home</a> |
+        <a href="/one-teleport" class="">One teleport</a> |
+        <a href="/two-teleport" class="">Two teleport</a> |
+        <a
+          aria-current="page"
+          href="/nested-teleport"
+          class="router-link-active router-link-exact-active"
+          >Nested teleport</a
+        >
+      </nav>
+      <div class="nested-teleports">
+        <p>
+          If you refresh here, the app reports an hydration mismatch and
+          everything is broken
+        </p>
+        <div><!--teleport start--><!--teleport end--></div>
+      </div>
+      <!--]-->
+    </div>
+    <div>Content of the child teleport</div>
+    <!---->
+    <div>
+      <div>Content of the parent teleport</div>
+      <div><!--teleport start--><!--teleport end--></div>
+    </div>
+    <!---->
+  </body>
+</html>
