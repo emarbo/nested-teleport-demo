@@ -1,5 +1,16 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  createMemoryHistory,
+  RouteRecordRaw,
+  Router as _Router,
+} from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import OneTeleportView from "../views/OneTeleportView.vue";
+import TwoTeleportView from "../views/TwoTeleportView.vue";
+import NestedTeleportView from "../views/NestedTeleportView.vue";
+
+export type Router = _Router;
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -8,19 +19,32 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/one-teleport",
+    name: "one-teleport",
+    component: OneTeleportView,
+  },
+  {
+    path: "/two-teleport",
+    name: "two-teleport",
+    component: TwoTeleportView,
+  },
+  {
+    path: "/nested-teleport",
+    name: "nested-teleport",
+    component: NestedTeleportView,
   },
 ];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+export function createBrowserRouter(): Router {
+  return createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes,
+  });
+}
 
-export default router;
+export function createBackendRouter(): Router {
+  return createRouter({
+    history: createMemoryHistory(process.env.BASE_URL),
+    routes,
+  });
+}
