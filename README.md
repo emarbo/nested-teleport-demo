@@ -1,5 +1,7 @@
 # nested-teleport-demo
 
+Demo for github issue: https://github.com/vuejs/vue-next/issues/5242
+
 ## Project setup
 
 ```
