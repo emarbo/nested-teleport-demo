@@ -4,13 +4,18 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "      vue-cli-service build --mode ${VUE_MODE:-production} --dest dist/client",
+    "build:server": "SSR=1 vue-cli-service build --mode ${VUE_MODE:-production} --dest dist/server",
+    "serve-prod": "node server.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "webpack-manifest-plugin": "^4.0.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",
