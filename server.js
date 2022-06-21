@@ -42,7 +42,7 @@ server.get("*", async (req, res) => {
 
   const context = {};
   const appContent = await renderToString(app, context);
-  const teleportContent = context.teleports?.body || "";
+  const teleportContent = context.teleports ? context.teleports["#body-teleports"] : "";
 
   console.log("Context is:");
   console.log(JSON.stringify(context, null, "  "));
@@ -50,6 +50,8 @@ server.get("*", async (req, res) => {
   console.log(appContent);
   console.log("Rendered teleport is:");
   console.log(teleportContent);
+  console.log("Teleport target is:");
+  console.log(context.teleports);
 
   fs.readFile(path.join(__dirname, "/dist/client/index.html"), (err, html) => {
     if (err) {
@@ -59,7 +61,7 @@ server.get("*", async (req, res) => {
     const content = html
       .toString()
       .replace('<div id="app">', `<div id="app">${appContent}`)
-      .replace("</body>", `${teleportContent}</body>`);
+      .replace("</body>", `<div id="body-teleports">${teleportContent}</div></body>`);
     console.log("Rendered HTML is:");
     console.log(content);
     res.setHeader("Content-Type", "text/html");

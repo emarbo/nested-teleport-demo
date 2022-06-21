@@ -2,6 +2,11 @@
 
 Demo for github issue: https://github.com/vuejs/vue-next/issues/5242
 
+**Update**: After updating Vue version and changing from `body` to
+`#body-teleports` as commented
+[here](https://github.com/vuejs/core/issues/5242#issuecomment-1129829701),
+the SSR start working properly.
+
 ## Project setup
 
 ```
